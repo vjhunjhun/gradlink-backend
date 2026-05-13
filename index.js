@@ -17,8 +17,14 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.FRONTEND_URLI,
+  process.env.FRONTEND_URLII,
+  "http://localhost:5173",
+];
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  origin: allowedOrigins,
   credentials: true,
 };
 app.use(cors(corsOptions));
